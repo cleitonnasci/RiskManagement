@@ -1,0 +1,55 @@
+{
+  "xsappname": "risk-management-dev",
+  "tenant-mode": "shared",
+
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.RiskViewer",
+      "description": "RiskViewer"
+    },
+    {
+      "name": "$XSAPPNAME.RiskManager",
+      "description": "RiskManager"
+    },
+    {
+      "name": "$XSAPPNAME.Callback",
+      "description": "With this scope set, the callbacks for tenant onboarding, offboarding and getDependencies can be called.",
+      "grant-as-authority-to-apps": ["$XSAPPNAME(application, sap-provisioning, tenant-onboarding)"]
+    }  
+  ],
+
+  "attributes": [],
+  
+  "authorities": [
+    "$XSAPPNAME.Callback"
+  ],  
+
+  "oauth2-configuration": 
+  {
+    "token-validity": 86400,
+    "refresh-token-validity": 86400,
+    "redirect-uris": 
+    [
+       "https://eed90c10trial-risk-management-approuter.cfapps.us10-001.hana.ondemand.com"	      
+    ]
+  },
+
+  "role-templates": [
+    {
+      "name": "RiskViewer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.RiskViewer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "RiskManager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.RiskManager"
+      ],
+      "attribute-references": []
+    }
+  ]
+}
