@@ -8,8 +8,6 @@
 # This is a YAML-file. YAML is an indentation-sensitive file format. Please make sure to properly indent changes to it.
 ###
 
-
-
 ### General project setup
 general:
   pipeline: "sap-cloud-sdk" 
@@ -17,24 +15,24 @@ general:
   inferBuildTool: true
 
 ### Step-specific configuration
-steps:
-  mavenExecute:
-    dockerImage: devxci/mbtci:1.0.14
+#steps:
+#  mavenExecute:
+#    dockerImage: devxci/mbtci:1.0.14
 
-  artifactPrepareVersion:
-    versioningType: cloud_noTag
+#  artifactPrepareVersion:
+#    versioningType: cloud_noTag
 
 ### Stage-specific configuration
 stages:
   Build:
-     mavenExecuteStaticCodeChecks: false
-     npmExecuteLint: false
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
   Additional Unit Tests:
-     npmExecuteScripts: false
-     karmaExecuteTests: false
+    npmExecuteScripts: false
+    karmaExecuteTests: false
   Release:
-     cloudFoundryDeploy: true
-     tmsUpload: false
+    cloudFoundryDeploy: true
+    tmsUpload: false
   steps:
     cloudFoundryDeploy:
       cloudFoundry: 
@@ -42,13 +40,13 @@ stages:
         org: "eed90c10trial"
         space: "dev"
         credentialsId: "cfdeploy"
-        appName: ""
+        appName: "CF Training"
       mtaDeployParameters: "-f --version-rule ALL"
-  artifactPrepareVersion:
-    versioningType: "cloud_noTag"
+    artifactPrepareVersion:
+      versioningType: "cloud_noTag"
       
-  'Confirm':
-    manualConfirmation: false
+#  'Confirm':
+#    manualConfirmation: false
 
 #  Integration:
 #    credentials:
